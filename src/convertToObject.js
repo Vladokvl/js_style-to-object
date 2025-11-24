@@ -7,11 +7,11 @@
  */
 function convertToObject(sourceString) {
   // write your code here
-  const result = {};
+  const styleObject = {};
   const rules = sourceString.split(';');
 
-  for (let rule of rules) {
-    rule = rule.trim();
+  rules.forEach((rule) => {
+    rule.trim();
 
     if (rule) {
       const [property, ...valueParts] = rule.split(':');
@@ -19,12 +19,12 @@ function convertToObject(sourceString) {
       if (property && valueParts.length > 0) {
         const value = valueParts.join(':').trim();
 
-        result[property.trim()] = value;
+        styleObject[property.trim()] = value;
       }
     }
-  }
+  });
 
-  return result;
+  return styleObject;
 }
 
 module.exports = convertToObject;
